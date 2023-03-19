@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { useState } from "react";
 import Sidebar from "@/components/Sidebar";
+import InputText from "@/components/InputText";
+import Button from "@/components/Button";
 
 export default function Page() {
   const [patternInput, setPatternInput] = useState("");
@@ -48,20 +50,14 @@ export default function Page() {
         <main className="w-80 mx-auto flex flex-col items-center mt-8">
           <h3 className="my-6 text-xl">CSS → Tailwind</h3>
 
-          <form onSubmit={onSubmit} className="flex flex-col w-full">
-            <input
-              type="text"
-              name="pattern"
-              className="w-full p-2 rounded  border border-gray-700"
-              placeholder="Enter CSS rules here"
+          <form className="flex flex-col w-full">
+            <InputText
               value={patternInput}
+              placeholder="Enter CSS rules here"
               onChange={(e) => setPatternInput(e.target.value)}
             />
-            <input
-              type="submit"
-              value="Go"
-              className="w-full p-2 rounded bg-gray-800 text-white mt-2 cursor-pointer opacity-80 hover:opacity-100 transition-opacity"
-            />
+
+            <Button onClick={onSubmit}>Go</Button>
           </form>
 
           <div className="w-full border-gray-700 text-center py-6 px-2">

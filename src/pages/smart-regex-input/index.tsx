@@ -48,8 +48,8 @@ export default function Page() {
 
       <div className="flex">
         <Sidebar />
-        <main className="flex flex-col items-center pt-[60px] min-w-[300px] mx-auto">
-          <h3>Explain RegEx like I&apos;m 5</h3>
+        <main className="w-80 mx-auto flex flex-col items-center mt-8">
+          <h3 className="my-6 text-xl">Explain RegEx like I&apos;m 5</h3>
 
           <form className="flex flex-col w-full">
             <InputText
