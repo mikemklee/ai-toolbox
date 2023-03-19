@@ -44,6 +44,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
         Please phrase your message such that it doesn't directly mention that we are using a RegEx pattern to validate the input.
         Instead, simply describe what part of the input value is invalid, and how it needs to be changed.
+
+        If the input is valid, please say "input_valid".
     `;
 
   try {
@@ -53,7 +55,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         { role: "system", content: systemMessage },
         {
           role: "user",
-          content: `Here is the RegEx pattern: ${pattern}, and here is the user input value: ${input}`,
+          content: `Here is the RegEx pattern: ^[a-z]$, and here is the user input value: 145`,
         },
         {
           role: "assistant",

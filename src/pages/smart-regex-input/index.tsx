@@ -41,43 +41,6 @@ export default function Page() {
 
   const [userInput, setUserInput] = useState("");
   const [validationPattern, setValidationPattern] = useState("^[a-z]$");
-  const [isValidating, setIsValidating] = useState(false);
-  const [validationResult, setValidationResult] = useState<string[] | null>(
-    null
-  );
-
-  async function handleBlur(event: React.FocusEvent<HTMLInputElement>) {
-    event.preventDefault();
-
-    const inputValue = event.target.value;
-
-    try {
-      setIsValidating(true);
-      const response = await fetch("/api/validate-input-with-regex", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ pattern: validationPattern, input: inputValue }),
-      });
-
-      const data = await response.json();
-      if (response.status !== 200) {
-        throw (
-          data.error ||
-          new Error(`Request failed with status ${response.status}`)
-        );
-      }
-
-      setValidationResult(JSON.parse(data.result));
-    } catch (error: any) {
-      // Consider implementing your own error handling logic here
-      console.error(error);
-      alert(error.message);
-    } finally {
-      setIsValidating(false);
-    }
-  }
 
   return (
     <>
@@ -136,24 +99,16 @@ export default function Page() {
               <span className="font-semibold mt-2">User input</span>
               <InputText
                 value={userInput}
-                onBlur={handleBlur}
+                validationPattern={validationPattern}
                 placeholder="Enter some text to validate"
                 onChange={(e) => setUserInput(e.target.value)}
               />
-
-              {validationResult && (
-                <div className="w-full text-red-500 my-4">
-                  {validationResult}
-                </div>
-              )}
-
-              {isValidating && <div className="mt-4">Validating...</div>}
 
               <span className="font-semibold mt-2">Code example</span>
               <div className="p-2 bg-gray-100 rounded">
                 <pre>
                   <code>
-                    {`<InputComponent \n\tvalidationPattern="^[a-z]$"\n\t...\n/>`}
+                    {`<InputComponent \n\tvalue="${userInput}"\n\tvalidationPattern="${validationPattern}"\n\t...\n/>`}
                   </code>
                 </pre>
               </div>
