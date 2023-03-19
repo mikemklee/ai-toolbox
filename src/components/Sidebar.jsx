@@ -22,6 +22,20 @@ const Sidebar = () => {
           </Link>
         </li>
       </ul>
+      
+      <div className="text-sm text-gray-400 mt-auto">
+          <span>
+            made by{" "}
+            <a
+              href="https://github.com/mikemklee"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:underline"
+            >
+              @mikemklee
+            </a>
+          </span>
+        </div>
     </nav>
   );
 };
