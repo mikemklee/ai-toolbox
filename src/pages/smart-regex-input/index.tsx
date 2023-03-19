@@ -132,6 +132,7 @@ export default function Page() {
                 placeholder="Enter a RegEx pattern e.g. ^[a-z]$"
                 onChange={(e) => setValidationPattern(e.target.value)}
               />
+
               <span className="font-semibold mt-2">User input</span>
               <InputText
                 value={userInput}
@@ -142,10 +143,23 @@ export default function Page() {
             </div>
 
             {validationResult && (
-              <div className="w-full text-red-500 mt-4">{validationResult}</div>
+              <div className="w-full text-red-500 my-4">{validationResult}</div>
             )}
 
             {isValidating && <div className="mt-4">Validating...</div>}
+
+            <span className="font-semibold mt-2">Code example</span>
+            <div className="p-2 bg-gray-100 rounded">
+              <pre>
+                <code>
+                  {`<InputComponent
+  validationPattern="^[a-z]$"
+  ...
+/>
+`}
+                </code>
+              </pre>
+            </div>
           </section>
         </main>
       </div>
