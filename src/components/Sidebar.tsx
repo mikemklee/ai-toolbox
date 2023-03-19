@@ -25,7 +25,6 @@ const Sidebar = () => {
       </div>
 
       <div>
-        <span className="font-semibold">Tools</span>
         <ul className="pl-2 list-none text-blue-600 flex flex-col gap-y-2">
           {routes.map((route) => (
             <li key={route.path} className="relative">
