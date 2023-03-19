@@ -45,7 +45,7 @@ export default function Page() {
       </Head>
 
       <div className="flex p-8">
-        <main className="w-80 mx-auto flex flex-col items-center">
+        <main className="flex flex-col w-80">
           <h3 className="mb-6 text-xl font-semibold">CSS → Tailwind</h3>
 
           <div className="flex flex-col w-full">
