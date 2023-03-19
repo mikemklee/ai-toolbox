@@ -47,7 +47,7 @@ export default function Page() {
 
       <div className="flex p-8">
         <main className="w-80 mx-auto flex flex-col items-center">
-          <h3 className="my-6 text-lg">
+          <h3 className="mb-6 text-lg font-semibold">
             Application 1: Explain a RegEx pattern
           </h3>
 
