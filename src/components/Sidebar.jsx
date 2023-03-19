@@ -1,36 +1,41 @@
 import React from "react";
 import Link from "next/link";
-import styles from "./Sidebar.module.css";
 
 const Sidebar = () => {
   return (
-    <nav className={styles.sidebar}>
-      <ul>
-        <li>
+    <nav className="min-w-[16rem] px-4 h-screen flex flex-col bg-gray-100">
+      <div className="py-4 border-b-2 border-b-gray-200 mb-4 font-semibold">
           <Link href="/">
-            Home
+            Mike's AI Toolbox
           </Link>
-        </li>
-        <li>
-          <Link href="/smart-regex-input">
-            Smart input with RegEx
-          </Link>
-        </li>
-        <li>
-          <Link href="/css2tw">
-          CSS → Tailwind
-          </Link>
-        </li>
-      </ul>
-      
-      <div className="text-gray-400 mt-auto">
+      </div>
+
+      <div>
+        <span className="font-semibold">
+          Tools
+        </span>
+        <ul className="pl-2 list-none text-blue-600 flex flex-col gap-y-2">
+          <li>
+            <Link href="/smart-regex-input">
+              Smart input with RegEx
+            </Link>
+          </li>
+          <li>
+            <Link href="/css2tw">
+            CSS → Tailwind
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+      <div className="text-gray-400 mt-auto py-4 border-t-2 border-t-gray-200 ">
           <span>
             made by{" "}
             <a
               href="https://github.com/mikemklee"
               target="_blank"
               rel="noreferrer"
-              className="hover:underline"
+              className="hover:underline text-blue-600"
             >
               @mikemklee
             </a>
