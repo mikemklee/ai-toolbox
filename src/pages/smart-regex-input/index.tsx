@@ -77,8 +77,6 @@ export default function Page() {
     } finally {
       setIsValidating(false);
     }
-
-    console.log("handleBlur", event.target.value);
   }
 
   return (
@@ -120,7 +118,7 @@ export default function Page() {
             ) : null}
           </section>
 
-          <section className="mt-10">
+          <section className="mt-8 pt-8 border-t-2 border-b-gray-200">
             <h3 className="mb-6 text-lg font-semibold">
               Application 2: Validate user input
             </h3>
@@ -143,9 +141,11 @@ export default function Page() {
               />
             </div>
 
-            <div className="w-full text-red-500 mt-4">
-              {isValidating ? "Validating..." : validationResult}
-            </div>
+            {validationResult && (
+              <div className="w-full text-red-500 mt-4">{validationResult}</div>
+            )}
+
+            {isValidating && <div className="mt-4">Validating...</div>}
           </section>
         </main>
       </div>

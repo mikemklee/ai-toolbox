@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 interface InputProps {
   value: string;
@@ -13,14 +13,25 @@ export default function InputText({
   onBlur,
   placeholder,
 }: InputProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    console.log(event.key);
+    if (event.key === "Enter" && inputRef.current) {
+      inputRef.current.blur();
+    }
+  };
+
   return (
     <input
+      ref={inputRef}
       type="text"
       placeholder={placeholder}
       value={value}
       onChange={onChange}
       onBlur={onBlur}
-      className="px-3 py-3 border border-teal-600 rounded outline-teal-600 mb-2 max-w-[20rem] w-full"
+      onKeyDown={handleKeyDown}
+      className="px-3 py-2 border border-teal-600 rounded outline-teal-600 mb-2 max-w-[20rem] w-full"
     />
   );
 }

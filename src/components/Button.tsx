@@ -15,7 +15,7 @@ export default function Button({
     <button
       onClick={onClick}
       disabled={disabled}
-      className="p-3 text-white bg-teal-600 rounded text-center cursor-pointer"
+      className="px-3 py-2 text-white bg-teal-600 rounded text-center cursor-pointer"
     >
       {children}
     </button>
