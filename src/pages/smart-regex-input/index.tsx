@@ -8,9 +8,9 @@ import Button from "@/components/Button";
 export default function Page() {
   const [patternInput, setPatternInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [result, setResult] = useState();
+  const [result, setResult] = useState<string[] | null>(null);
 
-  async function onSubmit(event) {
+  async function onSubmit(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     try {
       setIsLoading(true);
@@ -31,7 +31,7 @@ export default function Page() {
       }
 
       setResult(JSON.parse(data.result));
-    } catch (error) {
+    } catch (error: any) {
       // Consider implementing your own error handling logic here
       console.error(error);
       alert(error.message);
@@ -51,7 +51,7 @@ export default function Page() {
         <main className="w-80 mx-auto flex flex-col items-center mt-8">
           <h3 className="my-6 text-xl">Explain RegEx like I&apos;m 5</h3>
 
-          <form className="flex flex-col w-full">
+          <div className="flex flex-col w-full">
             <InputText
               value={patternInput}
               placeholder="Enter a RegEx pattern e.g. ^[a-z]$"
@@ -59,9 +59,9 @@ export default function Page() {
             />
 
             <Button onClick={onSubmit}>Explain the pattern</Button>
-          </form>
+          </div>
 
-          {result ? (
+          {result && (
             <div className="mt-10 w-full flex flex-col justify-start">
               <span className="font-semibold">Description</span>
               <ul className="list-disc pl-6">
@@ -70,7 +70,7 @@ export default function Page() {
                 ))}
               </ul>
             </div>
-          ) : null}
+          )}
 
           {isLoading ? (
             <div className="mt-10">Generating a response...</div>

@@ -9,7 +9,7 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState();
 
-  async function onSubmit(event) {
+  async function onSubmit(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     try {
       setIsLoading(true);
@@ -30,7 +30,7 @@ export default function Page() {
       }
 
       setResult(JSON.parse(data.result));
-    } catch (error) {
+    } catch (error: any) {
       // Consider implementing your own error handling logic here
       console.error(error);
       alert(error.message);
@@ -50,7 +50,7 @@ export default function Page() {
         <main className="w-80 mx-auto flex flex-col items-center mt-8">
           <h3 className="my-6 text-xl">CSS → Tailwind</h3>
 
-          <form className="flex flex-col w-full">
+          <div className="flex flex-col w-full">
             <InputText
               value={patternInput}
               placeholder="Enter CSS rules here"
@@ -58,7 +58,7 @@ export default function Page() {
             />
 
             <Button onClick={onSubmit}>Go</Button>
-          </form>
+          </div>
 
           <div className="w-full border-gray-700 text-center py-6 px-2">
             {isLoading ? "Generating a response..." : result}
