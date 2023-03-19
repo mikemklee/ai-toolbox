@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Sidebar from "../components/Sidebar";
 
 export default function Home() {
   return (
@@ -11,13 +10,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>
-        <div className="flex">
-          <Sidebar />
-          <main className="p-8">
-            <h1 className="">Let&apos;s explore what we can build with AI!</h1>
-          </main>
-        </div>
+      <div className="flex p-8">
+        <main>
+          <h1 className="">Let&apos;s explore what we can build with AI!</h1>
+        </main>
       </div>
     </>
   );

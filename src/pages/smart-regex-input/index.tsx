@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
 
-import Sidebar from "@/components/Sidebar";
 import InputText from "@/components/InputText";
 import Button from "@/components/Button";
 
@@ -46,10 +45,11 @@ export default function Page() {
         <title>Smart input with RegEx</title>
       </Head>
 
-      <div className="flex">
-        <Sidebar />
-        <main className="w-80 mx-auto flex flex-col items-center mt-8">
-          <h3 className="my-6 text-xl">Explain RegEx like I&apos;m 5</h3>
+      <div className="flex p-8">
+        <main className="w-80 mx-auto flex flex-col items-center">
+          <h3 className="my-6 text-lg">
+            Application 1: Explain a RegEx pattern
+          </h3>
 
           <div className="flex flex-col w-full">
             <InputText

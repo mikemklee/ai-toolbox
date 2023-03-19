@@ -35,7 +35,12 @@ const Sidebar = () => {
               >
                 •
               </span>
-              <Link href={route.path}>{route.name}</Link>
+              <Link
+                href={route.path}
+                className={pathname === route.path ? "font-semibold" : ""}
+              >
+                {route.name}
+              </Link>
             </li>
           ))}
         </ul>
