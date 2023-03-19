@@ -46,7 +46,15 @@ const Sidebar = () => {
         </ul>
       </div>
 
-      <div className="text-gray-400 mt-auto py-4 border-t-2 border-t-gray-200 ">
+      <div className="text-gray-400 mt-auto py-4 border-t-2 border-t-gray-200 flex flex-col gap-y-2">
+        <a
+          href="https://www.mikemunkyulee.com/"
+          target="_blank"
+          rel="noreferrer"
+          className="hover:underline text-blue-600"
+        >
+          come visit my website! 👋
+        </a>
         <span>
           made by{" "}
           <a
