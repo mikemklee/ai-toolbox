@@ -6,7 +6,7 @@ const Sidebar = () => {
     <nav className="min-w-[16rem] px-4 h-screen flex flex-col bg-gray-100">
       <div className="py-4 border-b-2 border-b-gray-200 mb-4 font-semibold">
           <Link href="/">
-            Mike's AI Toolbox
+            Mike&apos;s AI Toolbox
           </Link>
       </div>
 
