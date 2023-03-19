@@ -17,6 +17,7 @@ export default function InputText({
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      className="px-3 py-3 border border-teal-600 rounded outline-teal-600 mb-2"
     />
   );
 }

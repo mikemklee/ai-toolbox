@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { useState } from "react";
 
-import styles from "./index.module.css";
 import Sidebar from "@/components/Sidebar";
 import InputText from "@/components/InputText";
+import Button from "@/components/Button";
 
 export default function Page() {
   const [patternInput, setPatternInput] = useState("");
@@ -48,23 +48,23 @@ export default function Page() {
 
       <div className="flex">
         <Sidebar />
-        <main className={styles.main}>
+        <main className="flex flex-col items-center pt-[60px] min-w-[300px] mx-auto">
           <h3>Explain RegEx like I&apos;m 5</h3>
 
-          <form onSubmit={onSubmit}>
+          <form className="flex flex-col w-full">
             <InputText
               value={patternInput}
               placeholder="Enter a RegEx pattern e.g. ^[a-z]$"
               onChange={(e) => setPatternInput(e.target.value)}
             />
 
-            <input type="submit" value="Explain the pattern" />
+            <Button onClick={onSubmit}>Explain the pattern</Button>
           </form>
 
           {result ? (
-            <div className={styles.result}>
+            <div className="mt-10 w-full flex flex-col justify-start">
               <span className="font-semibold">Description</span>
-              <ul>
+              <ul className="list-disc pl-6">
                 {result.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
@@ -73,7 +73,7 @@ export default function Page() {
           ) : null}
 
           {isLoading ? (
-            <div className={styles.loading}>Generating a response...</div>
+            <div className="mt-10">Generating a response...</div>
           ) : null}
         </main>
       </div>
