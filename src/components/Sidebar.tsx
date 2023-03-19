@@ -1,7 +1,7 @@
-import React from 'react';
-import { useRouter } from 'next/router';
+import React from "react";
+import { useRouter } from "next/router";
 
-import Link from 'next/link';
+import Link from "next/link";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -9,12 +9,12 @@ const Sidebar = () => {
 
   const routes = [
     {
-      name: 'Smart input with RegEx',
-      path: '/smart-regex-input',
+      name: "Smart input with RegEx",
+      path: "/smart-regex-input",
     },
     {
-      name: 'CSS → Tailwind',
-      path: '/css2tw',
+      name: "CSS → Tailwind",
+      path: "/css2tw",
     },
   ];
 
@@ -31,7 +31,7 @@ const Sidebar = () => {
             <li key={route.path} className="relative">
               <span
                 className={
-                  pathname === route.path ? 'absolute left-[-1rem]' : 'hidden'
+                  pathname === route.path ? "absolute left-[-1rem]" : "hidden"
                 }
               >
                 •
@@ -44,7 +44,7 @@ const Sidebar = () => {
 
       <div className="text-gray-400 mt-auto py-4 border-t-2 border-t-gray-200 ">
         <span>
-          made by{' '}
+          made by{" "}
           <a
             href="https://github.com/mikemklee"
             target="_blank"

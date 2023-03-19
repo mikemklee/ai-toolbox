@@ -1,9 +1,9 @@
-import Head from 'next/head';
-import { useState } from 'react';
-import Sidebar from '@/components/Sidebar';
+import Head from "next/head";
+import { useState } from "react";
+import Sidebar from "@/components/Sidebar";
 
 export default function Page() {
-  const [patternInput, setPatternInput] = useState('');
+  const [patternInput, setPatternInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState();
 
@@ -11,10 +11,10 @@ export default function Page() {
     event.preventDefault();
     try {
       setIsLoading(true);
-      const response = await fetch('/api/css2tw', {
-        method: 'POST',
+      const response = await fetch("/api/css2tw", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ input: patternInput }),
       });
@@ -65,7 +65,7 @@ export default function Page() {
           </form>
 
           <div className="w-full border-gray-700 text-center py-6 px-2">
-            {isLoading ? 'Generating a response...' : result}
+            {isLoading ? "Generating a response..." : result}
           </div>
         </main>
       </div>
