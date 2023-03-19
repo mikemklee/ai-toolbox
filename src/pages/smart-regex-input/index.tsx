@@ -140,25 +140,23 @@ export default function Page() {
                 placeholder="Enter some text to validate"
                 onChange={(e) => setUserInput(e.target.value)}
               />
-            </div>
 
-            {validationResult && (
-              <div className="w-full text-red-500 my-4">{validationResult}</div>
-            )}
+              {validationResult && (
+                <div className="w-full text-red-500 my-4">
+                  {validationResult}
+                </div>
+              )}
 
-            {isValidating && <div className="mt-4">Validating...</div>}
+              {isValidating && <div className="mt-4">Validating...</div>}
 
-            <span className="font-semibold mt-2">Code example</span>
-            <div className="p-2 bg-gray-100 rounded">
-              <pre>
-                <code>
-                  {`<InputComponent
-  validationPattern="^[a-z]$"
-  ...
-/>
-`}
-                </code>
-              </pre>
+              <span className="font-semibold mt-2">Code example</span>
+              <div className="p-2 bg-gray-100 rounded">
+                <pre>
+                  <code>
+                    {`<InputComponent \n\tvalidationPattern="^[a-z]$"\n\t...\n/>`}
+                  </code>
+                </pre>
+              </div>
             </div>
           </section>
         </main>
