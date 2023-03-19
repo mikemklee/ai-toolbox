@@ -12,13 +12,13 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link href="/page1">
-            Page 1
+          <Link href="/smart-regex-input">
+            Smart input with RegEx
           </Link>
         </li>
         <li>
-          <Link href="/page2">
-            Page 2
+          <Link href="/css2tw">
+          CSS → Tailwind
           </Link>
         </li>
       </ul>

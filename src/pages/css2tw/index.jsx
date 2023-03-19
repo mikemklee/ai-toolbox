@@ -1,19 +1,18 @@
-
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "@/components/Sidebar";
 
-export default function Page2() {
+export default function Page() {
   return (
     <>
       <Head>
-        <title>Page 2</title>
+        <title>CSS → Tailwind</title>
       </Head>
 
       <div className={styles.container}>
         <Sidebar />
         <main className={styles.main}>
-          <h1 className="text-3xl font-bold underline">Page 2</h1>
+          <h1 className="text-3xl font-bold underline">CSS → Tailwind</h1>
         </main>
       </div>
     </>
