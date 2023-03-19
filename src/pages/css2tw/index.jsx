@@ -20,8 +20,6 @@ export default function Page() {
         body: JSON.stringify({ input: patternInput }),
       });
 
-      console.log("response?", response);
-
       const data = await response.json();
       if (response.status !== 200) {
         throw (
@@ -49,30 +47,30 @@ export default function Page() {
 
       <div className={styles.container}>
         <Sidebar />
-        <main className="w-80 mx-auto flex flex-col items-center my-auto">
-        <h3 className="my-6">CSS → Tailwind</h3>
+        <main className="w-80 mx-auto flex flex-col items-center mt-8">
+          <h3 className="my-6 text-xl">CSS → Tailwind</h3>
 
-        <form onSubmit={onSubmit} className="flex flex-col w-full">
-          <input
-            type="text"
-            name="pattern"
-            className="w-full p-2 rounded bg-gray-800 border border-gray-700"
-            placeholder="Enter CSS rules here"
-            value={patternInput}
-            onChange={(e) => setPatternInput(e.target.value)}
-          />
-          <input
-            type="submit"
-            value="Go"
-            className="w-full p-2 rounded bg-gray-800 mt-2 cursor-pointer opacity-80 hover:opacity-100 transition-opacity"
-          />
-        </form>
+          <form onSubmit={onSubmit} className="flex flex-col w-full">
+            <input
+              type="text"
+              name="pattern"
+              className="w-full p-2 rounded  border border-gray-700"
+              placeholder="Enter CSS rules here"
+              value={patternInput}
+              onChange={(e) => setPatternInput(e.target.value)}
+            />
+            <input
+              type="submit"
+              value="Go"
+              className="w-full p-2 rounded bg-gray-800 text-white mt-2 cursor-pointer opacity-80 hover:opacity-100 transition-opacity"
+            />
+          </form>
 
-        <div className="w-full border-gray-700 text-center py-6 px-2">
-          {isLoading ? "Generating a response..." : result}
-        </div>
+          <div className="w-full border-gray-700 text-center py-6 px-2">
+            {isLoading ? "Generating a response..." : result}
+          </div>
 
-      </main>
+        </main>
       </div>
     </>
   );

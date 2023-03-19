@@ -23,7 +23,7 @@ const Sidebar = () => {
         </li>
       </ul>
       
-      <div className="text-sm text-gray-400 mt-auto">
+      <div className="text-gray-400 mt-auto">
           <span>
             made by{" "}
             <a
