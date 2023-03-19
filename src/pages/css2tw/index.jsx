@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useState } from "react";
-import styles from "@/styles/Home.module.css";
 import Sidebar from "@/components/Sidebar";
 
 export default function Page() {
@@ -45,7 +44,7 @@ export default function Page() {
         <title>CSS → Tailwind</title>
       </Head>
 
-      <div className={styles.container}>
+      <div className="flex">
         <Sidebar />
         <main className="w-80 mx-auto flex flex-col items-center mt-8">
           <h3 className="my-6 text-xl">CSS → Tailwind</h3>

@@ -2,7 +2,6 @@ import Head from "next/head";
 import { useState } from "react";
 
 import styles from "./index.module.css";
-import homeStyles from "@/styles/Home.module.css";
 import Sidebar from "@/components/Sidebar";
 
 export default function Page() {
@@ -43,7 +42,7 @@ export default function Page() {
         <title>Smart input with RegEx</title>
       </Head>
 
-      <div className={homeStyles.container}>
+      <div className="flex">
         <Sidebar />
         <main className={styles.main}>
         <h3>Explain RegEx like I'm 5</h3>
