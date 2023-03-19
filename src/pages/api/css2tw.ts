@@ -1,3 +1,5 @@
+import type { NextApiRequest, NextApiResponse } from "next";
+
 import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
@@ -5,7 +7,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-async function generate(req, res) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!configuration.apiKey) {
     res.status(500).json({
       error: {
@@ -52,7 +54,7 @@ async function generate(req, res) {
     });
 
     res.status(200).json({
-      result: JSON.stringify(completion.data.choices[0].message.content),
+      result: JSON.stringify(completion.data.choices[0]?.message?.content),
     });
   } catch (error: any) {
     if (error.response) {
@@ -69,4 +71,4 @@ async function generate(req, res) {
   }
 }
 
-export default generate;
+export default handler;

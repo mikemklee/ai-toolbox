@@ -1,3 +1,5 @@
+import type { NextApiRequest, NextApiResponse } from "next";
+
 import { Configuration, OpenAIApi } from "openai";
 
 const configuration = new Configuration({
@@ -5,7 +7,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-async function generate(req, res) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!configuration.apiKey) {
     res.status(500).json({
       error: {
@@ -36,7 +38,7 @@ async function generate(req, res) {
     res.status(200).json({
       result: completion.data.choices[0].text,
     });
-  } catch (error) {
+  } catch (error: any) {
     // Consider adjusting the error handling logic for your use case
     if (error.response) {
       console.error(error.response.status, error.response.data);
@@ -52,7 +54,7 @@ async function generate(req, res) {
   }
 }
 
-function generatePrompt(pattern) {
+function generatePrompt(pattern: string) {
   return `
     To help out the users of my form field, I would like to show them what would be a valid input into the form field, given a RegEx pattern.
     I want you to give me a description of what the RegEx pattern matches.
@@ -64,4 +66,4 @@ function generatePrompt(pattern) {
   `;
 }
 
-export default generate;
+export default handler;
