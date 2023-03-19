@@ -100,7 +100,7 @@ export default function Page() {
               <InputText
                 value={userInput}
                 validationPattern={validationPattern}
-                placeholder="Enter some text to validate"
+                placeholder="Enter something to validate"
                 onChange={(e) => setUserInput(e.target.value)}
               />
 
