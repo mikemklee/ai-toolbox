@@ -14,10 +14,8 @@ export default function Home() {
       <div>
         <div className="flex">
           <Sidebar />
-          <main className="flex flex-col justify-between items-center p-6 min-h-screen flex-1">
-            <h1 className="text-2xl">
-              Let's explore what we can build with AI
-            </h1>
+          <main className="p-8">
+            <h1 className="">Let's explore what we can build with AI!</h1>
           </main>
         </div>
       </div>
