@@ -45,7 +45,7 @@ export default function Page() {
       <div className="flex">
         <Sidebar />
         <main className={styles.main}>
-        <h3>Explain RegEx like I'm 5</h3>
+        <h3>Explain RegEx like I&apos;m 5</h3>
 
         <form onSubmit={onSubmit}>
           <input
