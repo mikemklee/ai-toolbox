@@ -1,11 +1,12 @@
-import Head from 'next/head';
-import { useState } from 'react';
+import Head from "next/head";
+import { useState } from "react";
 
-import styles from './index.module.css';
-import Sidebar from '@/components/Sidebar';
+import styles from "./index.module.css";
+import Sidebar from "@/components/Sidebar";
+import InputText from "@/components/InputText";
 
 export default function Page() {
-  const [patternInput, setPatternInput] = useState('');
+  const [patternInput, setPatternInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState();
 
@@ -13,10 +14,10 @@ export default function Page() {
     event.preventDefault();
     try {
       setIsLoading(true);
-      const response = await fetch('/api/smart-regex-input', {
-        method: 'POST',
+      const response = await fetch("/api/smart-regex-input", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ pattern: patternInput }),
       });
@@ -51,19 +52,18 @@ export default function Page() {
           <h3>Explain RegEx like I&apos;m 5</h3>
 
           <form onSubmit={onSubmit}>
-            <input
-              type="text"
-              name="pattern"
-              placeholder="Enter a RegEx pattern e.g. ^[a-z]$"
+            <InputText
               value={patternInput}
+              placeholder="Enter a RegEx pattern e.g. ^[a-z]$"
               onChange={(e) => setPatternInput(e.target.value)}
             />
+
             <input type="submit" value="Explain the pattern" />
           </form>
 
           {result ? (
             <div className={styles.result}>
-              <h4>Description</h4>
+              <span className="font-semibold">Description</span>
               <ul>
                 {result.map((item, index) => (
                   <li key={index}>{item}</li>
