@@ -48,14 +48,16 @@ export default function Page() {
         <main className="flex flex-col w-80">
           <h3 className="mb-6 text-xl font-semibold">CSS → Tailwind</h3>
 
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col w-full gap-y-2">
             <InputText
               value={patternInput}
               placeholder="Enter CSS rules here"
               onChange={(e) => setPatternInput(e.target.value)}
             />
 
-            <Button onClick={onSubmit}>Go</Button>
+            <Button onClick={onSubmit} color="primary">
+              Go
+            </Button>
           </div>
 
           <div className="w-full border-gray-700 text-center py-6 px-2">
