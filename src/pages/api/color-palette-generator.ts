@@ -76,6 +76,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       res.status(500).json({
         error: {
           message: "An error occurred during your request.",
+          raw: JSON.stringify(error),
         },
       });
     }

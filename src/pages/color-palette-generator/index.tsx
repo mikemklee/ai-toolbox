@@ -20,20 +20,16 @@ export default function Page() {
         body: JSON.stringify({ input: colorInput }),
       });
 
-      console.log("response", response);
+      if (response.status !== 200) {
+        console.error("response", response);
+        throw new Error(`Request failed with status ${response.status}`);
+      }
 
       const data = await response.json();
       console.log("data", data);
 
       const hexRegex = /#[A-Fa-f0-9]{6}\b/g;
       const colorSet = new Set<string>(data.result.match(hexRegex));
-
-      if (response.status !== 200) {
-        throw (
-          data.error ||
-          new Error(`Request failed with status ${response.status}`)
-        );
-      }
 
       setResult(Array.from(colorSet));
     } catch (error: any) {
