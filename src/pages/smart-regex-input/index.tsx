@@ -55,10 +55,10 @@ export default function Page() {
               Application 1: Explain a RegEx pattern
             </h3>
 
-            <div className="flex flex-col w-full">
+            <div className="flex flex-col w-full gap-y-2">
               <InputText
                 value={patternInput}
-                placeholder="Enter a RegEx pattern e.g. ^[a-z]$"
+                placeholder="Enter a RegEx pattern (e.g. ^[a-z]$)"
                 onChange={(e) => setPatternInput(e.target.value)}
               />
 
@@ -88,13 +88,13 @@ export default function Page() {
               Application 2: Validate user input
             </h3>
 
-            <div className="flex flex-col w-full">
+            <div className="flex flex-col w-full gap-y-2">
               <span className="font-semibold">
                 RegEx pattern to validate with
               </span>
               <InputText
                 value={validationPattern}
-                placeholder="Enter a RegEx pattern e.g. ^[a-z]$"
+                placeholder="Enter a RegEx pattern (e.g. ^[a-z]$)"
                 onChange={(e) => setValidationPattern(e.target.value)}
               />
 

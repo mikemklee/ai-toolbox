@@ -48,7 +48,7 @@ export default function Page() {
         <main className="flex flex-col w-80">
           <h3 className="mb-6 text-xl font-semibold">CSS → Tailwind</h3>
 
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col w-full gap-y-2">
             <InputText
               value={patternInput}
               placeholder="Enter CSS rules here"

@@ -79,7 +79,7 @@ export default function InputText({
         onChange={onChange}
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}
-        className={`px-3 py-2 border rounded  mb-2 w-full transition-all ${
+        className={`px-3 py-2 border rounded w-full transition-all ${
           isValidating
             ? "bg-gray-200 border-gray-300 outline-gray-300 cursor-wait"
             : ""
