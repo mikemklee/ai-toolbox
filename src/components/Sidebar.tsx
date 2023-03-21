@@ -16,11 +16,15 @@ const Sidebar = () => {
       name: "CSS → Tailwind",
       path: "/css2tw",
     },
+    {
+      name: "Color palette generator",
+      path: "/color-palette-generator",
+    },
   ];
 
   return (
     <nav className="min-w-[16rem] px-4 h-screen flex flex-col bg-gray-100">
-      <div className="py-4 border-b-2 border-b-gray-200 mb-4 font-semibold">
+      <div className="py-4 border-b border-b-gray-200 mb-4 font-semibold">
         <Link href="/">Mike&apos;s AI Toolbox</Link>
       </div>
 
@@ -46,7 +50,7 @@ const Sidebar = () => {
         </ul>
       </div>
 
-      <div className="text-gray-400 mt-auto py-4 border-t-2 border-t-gray-200 flex flex-col gap-y-2">
+      <div className="text-gray-400 mt-auto py-4 border-t border-t-gray-200 flex flex-col gap-y-2">
         <a
           href="https://www.mikemunkyulee.com/"
           target="_blank"
