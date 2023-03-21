@@ -20,8 +20,10 @@ export default function Page() {
         body: JSON.stringify({ input: colorInput }),
       });
 
+      console.log("response", response);
+
       const data = await response.json();
-      console.log(data);
+      console.log("data", data);
 
       const hexRegex = /#[A-Fa-f0-9]{6}\b/g;
       const colorSet = new Set<string>(data.result.match(hexRegex));
