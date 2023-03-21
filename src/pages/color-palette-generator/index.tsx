@@ -6,10 +6,41 @@ import Button from "@/components/Button";
 export default function Page() {
   const [colorInput, setColorInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [result, setResult] = useState();
+  const [result, setResult] = useState<string[] | null>(null);
 
   async function onSubmit(event: React.MouseEvent<HTMLButtonElement>) {
-    // no-op
+    event.preventDefault();
+    try {
+      setIsLoading(true);
+      const response = await fetch("/api/color-palette-generator", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ input: colorInput }),
+      });
+
+      const data = await response.json();
+      console.log(data);
+
+      const hexRegex = /#[A-Fa-f0-9]{6}\b/g;
+      const colorSet = new Set<string>(data.result.match(hexRegex));
+
+      if (response.status !== 200) {
+        throw (
+          data.error ||
+          new Error(`Request failed with status ${response.status}`)
+        );
+      }
+
+      setResult(Array.from(colorSet));
+    } catch (error: any) {
+      // Consider implementing your own error handling logic here
+      console.error(error);
+      alert(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -31,14 +62,31 @@ export default function Page() {
               onChange={(e) => setColorInput(e.target.value)}
             />
 
-            <Button onClick={onSubmit} color="primary">
+            <Button onClick={onSubmit} color="secondary">
               Generate
             </Button>
           </div>
 
-          <div className="w-full border-gray-700 text-center py-6 px-2">
-            {isLoading ? "Generating a response..." : result}
-          </div>
+          {result && (
+            <div className="mt-4 w-full flex flex-col justify-start">
+              <span className="font-semibold">Palette</span>
+              <div className="grid grid-cols-4 gap-4">
+                {result.map((color, index) => (
+                  <div
+                    key={index}
+                    className="w-32 h-32 p-2 rounded"
+                    style={{ backgroundColor: color }}
+                  >
+                    {color}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {isLoading ? (
+            <div className="mt-4">Generating a palette...</div>
+          ) : null}
         </main>
       </div>
     </>
