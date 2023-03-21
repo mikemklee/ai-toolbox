@@ -9,6 +9,7 @@ interface ButtonProps {
 
 const buttonStyles: Record<ButtonProps["color"], string> = {
   primary: "bg-teal-600 text-white",
+  secondary: "border border-teal-600 text-teal-600",
   warning: "bg-red-500 text-white",
   disabled: "bg-gray-300 text-gray-400 pointer-events-none",
 };
