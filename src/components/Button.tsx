@@ -26,7 +26,7 @@ export default function Button({
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`px-3 py-2 cursor-pointer ${styles} rounded text-center`}
+      className={`px-3 py-2 cursor-pointer ${styles} rounded text-center min-w-[8rem]`}
     >
       {children}
     </button>
