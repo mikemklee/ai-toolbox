@@ -55,7 +55,9 @@ export default function Page() {
               onChange={(e) => setPatternInput(e.target.value)}
             />
 
-            <Button onClick={onSubmit}>Go</Button>
+            <Button onClick={onSubmit} color="primary">
+              Go
+            </Button>
           </div>
 
           <div className="w-full border-gray-700 text-center py-6 px-2">

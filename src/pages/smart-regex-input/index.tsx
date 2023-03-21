@@ -62,7 +62,9 @@ export default function Page() {
                 onChange={(e) => setPatternInput(e.target.value)}
               />
 
-              <Button onClick={onSubmit}>Explain the pattern</Button>
+              <Button onClick={onSubmit} color="primary">
+                Explain the pattern
+              </Button>
             </div>
 
             {result && (
