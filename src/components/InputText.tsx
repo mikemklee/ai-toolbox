@@ -86,7 +86,7 @@ export default function InputText({
         } ${
           validationResult
             ? "border-red-500 outline-red-500"
-            : "border-teal-600 outline-teal-600"
+            : "border-gray-400 outline-gray-400"
         }`}
         disabled={isValidating}
       />
