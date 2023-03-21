@@ -13,12 +13,12 @@ const Sidebar = () => {
       path: "/smart-regex-input",
     },
     {
-      name: "CSS → Tailwind",
-      path: "/css2tw",
-    },
-    {
       name: "Color palette generator",
       path: "/color-palette-generator",
+    },
+    {
+      name: "CSS → Tailwind",
+      path: "/css2tw",
     },
   ];
 
