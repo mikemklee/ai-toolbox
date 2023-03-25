@@ -43,6 +43,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     const filepath = await parseFile(req);
 
     const file = fs.createReadStream(filepath);
+    // @ts-ignore
     const resp = await openai.createTranscription(file, "whisper-1");
 
     res.status(200).json({ result: resp.data.text });
