@@ -5,7 +5,7 @@ import Button from "@/components/Button";
 export default function Page() {
   const [file, setFile] = useState(null);
   const [isTranscribing, setIsTranscribing] = useState(false);
-  const [transcriptionResult, setTranscriptionResult] = useState();
+  const [transcriptionResult, setTranscriptionResult] = useState(null);
   const [isSummarizing, setIsSummarizing] = useState(false);
   const [summaryResult, setSummaryResult] = useState<string[] | null>(null);
 
@@ -21,6 +21,9 @@ export default function Page() {
       console.error("No file selected");
       return;
     }
+
+    setTranscriptionResult(null);
+    setSummaryResult(null);
 
     const body = new FormData();
     body.append("file", file);
@@ -109,26 +112,12 @@ export default function Page() {
             </Button>
           </div>
 
-          <div
-            className={`w-full border-gray-700 text-center py-6 px-2 ${
-              isTranscribing ? "visible" : "hidden"
-            }`}
-          >
-            Processing...
-          </div>
-
-          <div className={`mt-4 ${transcriptionResult ? "visible" : "hidden"}`}>
-            <span className="font-semibold text-lg">Full script</span>
-            <p>{transcriptionResult}</p>
-          </div>
-
-          <div
-            className={`w-full border-gray-700 text-center py-6 px-2 ${
-              isSummarizing ? "visible" : "hidden"
-            }`}
-          >
-            Summarizing...
-          </div>
+          {(isTranscribing || isSummarizing) && (
+            <div className="w-full border-gray-700 text-center py-6 px-2">
+              {isTranscribing && <p>Transcribing...</p>}
+              {isSummarizing && <p>Summarizing...</p>}
+            </div>
+          )}
 
           {summaryResult && (
             <div className="mt-4">
@@ -140,6 +129,11 @@ export default function Page() {
               </ul>
             </div>
           )}
+
+          <div className={`mt-4 ${transcriptionResult ? "visible" : "hidden"}`}>
+            <span className="font-semibold text-lg">Full script</span>
+            <p>{transcriptionResult}</p>
+          </div>
         </main>
       </div>
     </>
