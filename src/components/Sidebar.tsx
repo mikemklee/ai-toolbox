@@ -9,6 +9,10 @@ const Sidebar = () => {
 
   const routes = [
     {
+      name: "Audio tl:dr;",
+      path: "/audio-tldr",
+    },
+    {
       name: "Smart input with RegEx",
       path: "/smart-regex-input",
     },
@@ -23,7 +27,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <nav className="min-w-[16rem] px-4 h-screen flex flex-col bg-gray-100">
+    <nav className="w-[16rem] h-screen fixed px-4 flex flex-col bg-gray-100">
       <div className="py-4 border-b border-b-gray-200 mb-4 font-semibold">
         <Link href="/">Mike&apos;s AI Toolbox</Link>
       </div>
