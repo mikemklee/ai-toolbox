@@ -20,7 +20,7 @@ export default function Button({
   disabled = false,
   color = "primary",
 }: ButtonProps) {
-  const styles = buttonStyles[color];
+  const styles = buttonStyles[disabled ? "disabled" : color];
 
   return (
     <button
