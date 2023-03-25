@@ -4,20 +4,25 @@ import InputText from "@/components/InputText";
 import Button from "@/components/Button";
 
 export default function Page() {
-  const [patternInput, setPatternInput] = useState("");
+  const [file, setFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState();
 
   async function onSubmit(event: React.MouseEvent<HTMLButtonElement>) {
-    event.preventDefault();
+    if (!file) {
+      console.error("No file selected");
+      return;
+    }
+
+    const body = new FormData();
+    body.append("file", file);
+
     try {
       setIsLoading(true);
-      const response = await fetch("/api/css2tw", {
+
+      const response = await fetch("/api/audio-tldr", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ input: patternInput }),
+        body,
       });
 
       const data = await response.json();
@@ -28,7 +33,9 @@ export default function Page() {
         );
       }
 
-      setResult(JSON.parse(data.result));
+      console.log("Response data", data);
+
+      // setResult(JSON.parse(data.result));
     } catch (error: any) {
       // Consider implementing your own error handling logic here
       console.error(error);
@@ -38,31 +45,11 @@ export default function Page() {
     }
   }
 
-  async function handleFileUpload(event: any) {
+  function handleFileUpload(event: any) {
     const file = event.target.files[0];
-    console.log("File?", file);
     if (!file) return;
 
-    const fileReader = new FileReader();
-    fileReader.readAsArrayBuffer(file);
-
-    try {
-      const buffer = await new Promise<ArrayBuffer>((resolve, reject) => {
-        fileReader.onload = (e) => {
-          resolve(fileReader.result as ArrayBuffer);
-        };
-        fileReader.onerror = (e) => {
-          reject(e);
-        };
-      });
-
-      const audioContext = new AudioContext();
-      const decodedBuffer = await audioContext.decodeAudioData(buffer);
-      // Do something with the audio buffer here
-      console.log(decodedBuffer);
-    } catch (e) {
-      console.error(e);
-    }
+    setFile(file);
   }
 
   return (
@@ -75,23 +62,16 @@ export default function Page() {
         <main className="flex flex-col w-80">
           <h3 className="mb-6 text-xl font-semibold">Audio tl:dr;</h3>
 
-          <input type="file" name="" id="" onChange={handleFileUpload} />
-
-          {/* <div className="flex flex-col w-full gap-y-2">
-            <InputText
-              value={patternInput}
-              placeholder="Enter CSS rules here"
-              onChange={(e) => setPatternInput(e.target.value)}
-            />
-
-            <Button onClick={onSubmit} color="primary">
-              Go
+          <div className="flex flex-col w-full gap-y-2">
+            <input type="file" name="" id="" onChange={handleFileUpload} />
+            <Button onClick={onSubmit} color="primary" disabled={!file}>
+              Submit
             </Button>
           </div>
 
           <div className="w-full border-gray-700 text-center py-6 px-2">
-            {isLoading ? "Generating a response..." : result}
-          </div> */}
+            {isLoading ? "Uploading..." : result}
+          </div>
         </main>
       </div>
     </>
