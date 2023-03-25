@@ -33,9 +33,7 @@ export default function Page() {
         );
       }
 
-      console.log("Response data", data);
-
-      // setResult(JSON.parse(data.result));
+      setResult(data.result);
     } catch (error: any) {
       // Consider implementing your own error handling logic here
       console.error(error);
@@ -59,18 +57,27 @@ export default function Page() {
       </Head>
 
       <div className="flex p-8">
-        <main className="flex flex-col w-80">
+        <main className="flex flex-col">
           <h3 className="mb-6 text-xl font-semibold">Audio tl:dr;</h3>
 
-          <div className="flex flex-col w-full gap-y-2">
+          <div className="flex flex-col gap-y-2 w-80">
             <input type="file" name="" id="" onChange={handleFileUpload} />
             <Button onClick={onSubmit} color="primary" disabled={!file}>
               Submit
             </Button>
           </div>
 
-          <div className="w-full border-gray-700 text-center py-6 px-2">
-            {isLoading ? "Uploading..." : result}
+          <div
+            className={`w-full border-gray-700 text-center py-6 px-2 ${
+              isLoading ? "visible" : "hidden"
+            }`}
+          >
+            Transcribing...
+          </div>
+
+          <div className={`mt-4 ${result ? "visible" : "hidden"}`}>
+            <span className="font-semibold text-lg">Full script</span>
+            <p>{result}</p>
           </div>
         </main>
       </div>
