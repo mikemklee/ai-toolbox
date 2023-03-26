@@ -47,15 +47,14 @@ export default function Page() {
         body,
       });
 
-      const data = await response.json();
+      const { result, error } = await response.json();
       if (response.status !== 200) {
         throw (
-          data.error ||
-          new Error(`Request failed with status ${response.status}`)
+          error || new Error(`Request failed with status ${response.status}`)
         );
       }
 
-      setTranscriptionResult(data.result);
+      setTranscriptionResult(result);
     } catch (error: any) {
       // Consider implementing your own error handling logic here
       console.error(error);
@@ -82,15 +81,15 @@ export default function Page() {
         body: JSON.stringify({ input }),
       });
 
-      const data = await response.json();
+      const { result, error } = await response.json();
+
       if (response.status !== 200) {
         throw (
-          data.error ||
-          new Error(`Request failed with status ${response.status}`)
+          error || new Error(`Request failed with status ${response.status}`)
         );
       }
 
-      setSummaryResult(JSON.parse(data.result));
+      setSummaryResult(JSON.parse(result));
     } catch (error: any) {
       // Consider implementing your own error handling logic here
       console.error(error);
