@@ -2,8 +2,10 @@ import Head from "next/head";
 import { useState } from "react";
 import Button from "@/components/Button";
 
+const MAX_FILE_SIZE_IN_BYTES = 5242880;
+
 export default function Page() {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<File | null>(null);
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [transcriptionResult, setTranscriptionResult] = useState(null);
   const [isSummarizing, setIsSummarizing] = useState(false);
@@ -16,9 +18,18 @@ export default function Page() {
     setFile(file);
   }
 
-  async function handleTranscription() {
+  async function handleTranscription(
+    event: React.MouseEvent<HTMLButtonElement>
+  ) {
+    event.preventDefault();
+
     if (!file) {
       console.error("No file selected");
+      return;
+    }
+
+    if (file.size > MAX_FILE_SIZE_IN_BYTES) {
+      alert("File is too large. Please select a file that is less than 5MB.");
       return;
     }
 
@@ -102,7 +113,14 @@ export default function Page() {
           <h3 className="mb-6 text-xl font-semibold">Audio tl:dr;</h3>
 
           <div className="flex flex-col gap-y-2 w-80">
-            <input type="file" name="" id="" onChange={handleFileUpload} />
+            <label htmlFor="file">Select an audio file to upload</label>
+
+            <input
+              type="file"
+              onChange={handleFileUpload}
+              accept="audio/*"
+              maxLength={MAX_FILE_SIZE_IN_BYTES}
+            />
             <Button
               onClick={handleTranscription}
               color="primary"
