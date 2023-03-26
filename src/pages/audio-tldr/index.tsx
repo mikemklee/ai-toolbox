@@ -113,7 +113,9 @@ export default function Page() {
           <h3 className="mb-6 text-xl font-semibold">Audio tl:dr;</h3>
 
           <div className="flex flex-col gap-y-2 w-80">
-            <label htmlFor="file">Select an audio file to upload</label>
+            <label htmlFor="file">
+              Select an audio file to upload (up to 5MB)
+            </label>
 
             <input
               type="file"
