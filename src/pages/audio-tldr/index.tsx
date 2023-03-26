@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "@/components/Button";
 
 const MAX_FILE_SIZE_IN_BYTES = 5242880;
@@ -56,8 +56,6 @@ export default function Page() {
       }
 
       setTranscriptionResult(data.result);
-
-      handleSummary(data.result);
     } catch (error: any) {
       // Consider implementing your own error handling logic here
       console.error(error);
@@ -101,6 +99,12 @@ export default function Page() {
       setIsSummarizing(false);
     }
   }
+
+  useEffect(() => {
+    if (transcriptionResult) {
+      handleSummary(transcriptionResult);
+    }
+  }, [transcriptionResult]);
 
   return (
     <>
