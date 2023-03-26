@@ -113,7 +113,7 @@ export default function Page() {
 
       <div className="flex p-8">
         <main className="flex flex-col">
-          <h3 className="mb-6 text-xl font-semibold">Audio tl:dr;</h3>
+          <h3 className="mb-6 text-lg font-semibold">Audio tl:dr;</h3>
 
           <div className="flex flex-col gap-y-2 w-80">
             <label htmlFor="file">
@@ -137,8 +137,8 @@ export default function Page() {
 
           {(isTranscribing || isSummarizing) && (
             <div className="w-full border-gray-700 text-center py-6 px-2">
-              {isTranscribing && <p>Transcribing...</p>}
-              {isSummarizing && <p>Summarizing...</p>}
+              {isTranscribing && <p>Step 1: Generatng a transcript...</p>}
+              {isSummarizing && <p>Step 2: Generating a summary...</p>}
             </div>
           )}
 
