@@ -29,7 +29,7 @@ const Sidebar = () => {
   return (
     <nav className="w-[16rem] h-screen fixed px-4 flex flex-col bg-gray-100">
       <div className="py-4 border-b border-b-gray-200 mb-4 font-semibold">
-        <Link href="/">Mike&apos;s AI Toolbox</Link>
+        <Link href="/">AI Toolbox</Link>
       </div>
 
       <div>

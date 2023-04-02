@@ -1,4 +1,4 @@
-## Mike's AI Toolbox
+## AI Toolbox
 
 Assorted tools (and toys) to explore what we can build with AI!
 
