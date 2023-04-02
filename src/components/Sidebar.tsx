@@ -9,12 +9,12 @@ const Sidebar = () => {
 
   const routes = [
     {
-      name: "Audio tl:dr;",
-      path: "/audio-tldr",
-    },
-    {
       name: "Smart input with RegEx",
       path: "/smart-regex-input",
+    },
+    {
+      name: "Audio tl:dr;",
+      path: "/audio-tldr",
     },
     {
       name: "Color palette generator",
